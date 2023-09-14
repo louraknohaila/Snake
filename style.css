@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: #010914; /* Bleu vif */
+    font-family: 'Arial', sans-serif;
+    font-size: 36px;
+}
+
+#title {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px dashed #0b2e5a; /* Bordure pointillée sous le texte */
+    padding-bottom: 10px;
+}
+
+
+body {
+    background: linear-gradient(#f2f2f2, #e0e0e0); /* Gris clair */
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    animation: changeBackground 1s infinite alternate;
+}
+
+@keyframes changeBackground {
+    0% {
+        background: linear-gradient(135deg, #1a73e8, #ff4081); /* Bleu, Rose */
+    }
+    50% {
+        background: linear-gradient(135deg, #ff4081, #1a73e8); /* Rose, Bleu */
+    }
+    100% {
+        background: linear-gradient(135deg, #1a73e8, #ff4081); /* Bleu, Rose */
+    }
+}
+
+#game-board {
+    background-color: #d9d9d9;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
+    width: 190vmin;
+    height: 75vmin;
+    display: grid;
+    grid-template-columns: repeat(21, 1fr);
+    grid-template-rows: repeat(21, 1fr);
+    border: 2px solid #666;
+    border-style:double;
+}
+
+.snake-head {
+    background-color: #5692dc;
+    border: 0.25vmin solid #222;
+    border-radius: 100%;
+    position: relative;
+}
+
+.snake {
+    background-color: #2525b5;
+    border: 0.20vmin solid #444;
+    border-radius: 0;
+}
+
+.eye {
+    width: 0.9vmin;
+    height: 0.9vmin;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 0.9vmin;
+}
+
+.left-eye {
+    left: 0.8vmin;
+}
+
+.right-eye {
+    right: 0.3vmin;
+}
+
+.nose {
+    width: 0.7vmin;
+    height: 0.7vmin;
+    background-color: #d9534f; /* Rouge */
+    border-radius: 50%;
+    position: absolute;
+    top: 1.9vmin;
+    left: 11px;
+}
+
+.food {
+    background-color: #ff4081; /* Rose */
+    border: 0.25vmin solid #6b0808;
+    border-radius: 100%;
+    position: relative;
+}
+
+.stem {
+    width: 0.1vmin;
+    height: 0.5vmin;
+    background-color: #8f8f8f;
+    position: absolute;
+    top: -0.3vmin;
+    left: 0.45vmin;
+}
+
+.failure-window {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(48, 4, 4, 0.7);
+    z-index: 999;
+}
+
+.failure-message {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.failure-message h2 {
+    color: #d9534f; /* Rouge */
+}
+
+.failure-message button {
+    padding: 5px 15px;
+    background-color: #d9534f; /* Rouge */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Styles pour la fenêtre modale */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#level-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(159, 159, 159, 0.8);
+    z-index: 999;
+}
+
+#level-message {
+    background-color: #0a0a0a;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#level-message h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+#level-message button {
+    background-color: #d9534f; /* Rouge */
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 60px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin: 5px;
+}
+
+#level-message button:hover {
+    background-color: #c9302c; /* Rouge plus foncé */
+    color: white;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    /* background-color: #456bb1; */
+    border: 2px dashed #080808; /* Rouge */
+    margin-top: 20px;
+    font-size: 29px;
+
+}
+
+.info p {
+    margin: 0;
+    font-size: 38px;
+    
+
+}
+
+#timeCounter,
+#appleCounter {
+    font-size: 25px;
+    font-weight: 700;
+    margin-left: 40px;
+}
